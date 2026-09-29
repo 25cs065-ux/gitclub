@@ -55,6 +55,7 @@ export default function ProjectForm() {
 
   const fetchProject = async () => {
     try {
+      if (!id) return;
       const { data, error } = await supabase
         .from('projects')
         .select('*')
@@ -235,6 +236,7 @@ export default function ProjectForm() {
 
     try {
       if (isEditing) {
+        if (!id) throw new Error('Missing project ID');
         const { error } = await supabase
           .from('projects')
           .update(formData)

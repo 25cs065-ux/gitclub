@@ -25,6 +25,15 @@ export interface Database {
           role?: string
           created_at?: string
         }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       projects: {
         Row: {
@@ -75,6 +84,7 @@ export interface Database {
           is_featured?: boolean
           created_at?: string
         }
+        Relationships: []
       }
       members: {
         Row: {
@@ -107,6 +117,7 @@ export interface Database {
           linkedin_url?: string | null
           avatar_url?: string | null
         }
+        Relationships: []
       }
       project_members: {
         Row: {
@@ -121,6 +132,22 @@ export interface Database {
           project_id?: string
           member_id?: string
         }
+        Relationships: [
+          {
+            foreignKeyName: "project_members_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "members"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "project_members_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Views: {

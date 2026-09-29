@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Code, ExternalLink, ArrowLeft, Users, Calendar, Layout, Info, Star, Code2 } from 'lucide-react';
+import { Code, ExternalLink, ArrowLeft, Users, Calendar, Info, Star, Code2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import type { Database } from '../types/database.types';
 
 type Project = Database['public']['Tables']['projects']['Row'];
-type ProjectMember = Database['public']['Tables']['project_members']['Row'];
 type Member = Database['public']['Tables']['members']['Row'];
 
 export default function ProjectDetails() {
